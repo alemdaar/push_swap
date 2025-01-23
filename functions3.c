@@ -33,41 +33,42 @@ void shift_same_direction (t_stack **a, t_stack **b, t_stack *shortest, int a_si
 	t_indexes index;
 
 	index.c = smaller_top (shortest);
-	index.i = shortest->total - index.i;
+	index.i = shortest->total - index.c;
 	if (shortest->direction == 'u' || shortest->direction == 'm')
 	{
 		shift_up_2(a, b, a_size, b_size, index.c);
-		if (shortest->top != shortest->top)
+		if (index.i)
 		{
-			if (shortest->top > shortest->top)
-				shift_up ('b', b, b_size, shortest->total - shortest->top);
+			if (shortest->top != index.c) // means asghar wahid mashi b, so shift a
+				shift_up ('b', b, b_size, index.i);
 			else
-				shift_up ('a', a, a_size, shortest->total - shortest->top);
+				shift_up ('a', a, a_size, index.i);
 		}
 		return ;
 	}
 	shift_down_2(a, b, a_size, b_size, index.c);
-	if (shortest->top != shortest->top)
+	if (index.i)
 	{
-		if (shortest->top > shortest->top)
-			shift_down ('b', b, b_size, shortest->total - shortest->top);
+		if (shortest->top != index.c)
+			shift_down ('b', b, b_size, index.i);
 		else
-			shift_down ('a', a, a_size, shortest->total - shortest->top);
+			shift_down ('a', a, a_size, index.i);
 	}
 }
 
 void shift_with_m (t_stack **a, t_stack **b, t_stack *shortest, int a_size, int b_size)
 {
 	t_indexes index;
+	t_stack *tmp;
 
+	tmp = shortest->target;
 	index.c = smaller_top (shortest);
-	index.i = shortest->total - index.i;
-	if (shortest->direction == 'u' || shortest->direction == 'u')
+	if (shortest->direction == 'u' || tmp->direction == 'u')
 	{
 		shift_up_2(a, b, a_size, b_size, index.c);
-		if (shortest->top != shortest->top)
+		if (shortest->total - index.c > 0)
 		{
-			if (shortest->top > shortest->top)
+			if (shortest->top > tmp->top)
 				shift_up ('b', b, b_size, index.c);
 			else
 				shift_up ('a', a, a_size, index.c);
@@ -75,9 +76,9 @@ void shift_with_m (t_stack **a, t_stack **b, t_stack *shortest, int a_size, int 
 		return ;
 	}
 	shift_down_2(a, b, a_size, b_size, index.c);
-	if (shortest->top != shortest->top)
+	if (shortest->total - index.c > 0)
 	{
-		if (shortest->top > shortest->top)
+		if (shortest->top > tmp->top)
 			shift_down ('b', b, b_size, index.c);
 		else
 			shift_down ('a', a, a_size, index.c);
