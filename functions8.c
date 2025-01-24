@@ -7,6 +7,7 @@ void move_it (t_stack **a, t_stack **b, t_stack *shortest, int a_size, int b_siz
 	aa = shortest->target;
 	if (shortest->direction == 't')
 	{
+		// printf ("b f top !");
 		if (aa->direction == 'u' || aa->direction == 'm')
 			shift_up('a', a, a_size, aa->top);
 		else
@@ -14,12 +15,13 @@ void move_it (t_stack **a, t_stack **b, t_stack *shortest, int a_size, int b_siz
 	}
 	else if (aa->direction == 't')
 	{
+		// printf ("a f top !");
 		if (shortest->direction == 'u' || shortest->direction == 'm')
 			shift_up('b', b, b_size, shortest->top);
 		else
 			shift_down('b', b, b_size, shortest->top);
 	}
-	if (shortest->direction == aa->direction)
+	else if (shortest->direction == aa->direction)
 		shift_same_direction (a, b, shortest, a_size, b_size);
 	else if (shortest->direction == 'm' || aa->direction == 'm')
 		shift_with_m (a, b, shortest, a_size, b_size);

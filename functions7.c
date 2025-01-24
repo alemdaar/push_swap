@@ -5,17 +5,26 @@ void comeback_to_a (t_stack **a, t_stack **b, int b_size)
 	t_indexes index;
 	t_stack *shortest;
 	t_stack *tmp;
+	// char var[1];
 
 	index.i = 3;
 	while (b_size)
 	{
+		// print_stack (*a, *b);
+		// scanf("%s", var);
+		// printf ("heere i : %s\n", var);
 		create_tops (*a, index.i);
 		create_tops (*b, b_size);
 		make_target(*a, b);
 		shortest = shortest_move (*b);
 		tmp = shortest->target;
+		// printf ("a : %d\n", tmp->number);
+		// printf ("b : %d\n", shortest->number);
+		// printf ("a direction : %c\n", tmp->direction);
+		// printf ("b direction : %c\n", shortest->direction);
 		if (shortest->direction == 't' && tmp->direction == 't')
 		{
+			// printf ("bjuj f top !");
 			push ('a', a, b);
 			b_size--;
 			index.i++;
@@ -65,6 +74,7 @@ int algorithm(t_stack **a, t_stack **b, int elements_size)
 	return 0;
 }
 
+
 void push_swap (t_stack **a, int elements_size)
 {
 	t_stack *b;
@@ -73,7 +83,7 @@ void push_swap (t_stack **a, int elements_size)
 	if (!is_sorted(a))
 	{
 		algorithm(a, &b, elements_size);
-		// print_stack (*a, NULL);
+		// print_stack (*a, b);
 		while ((*a))
 		{
 			free (*a);

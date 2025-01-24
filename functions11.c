@@ -33,16 +33,12 @@ int nothing_bigger (int number, t_stack *a)
 
 void make_target(t_stack *a, t_stack **b)
 {
-	t_indexes index;
-	t_stack *tmp;
 	t_stack *tmp_b;
 
-	index.i = 0;
 	tmp_b = *b;
 	while (tmp_b)
 	{
 		find_target_in_b (&tmp_b, a);
-		tmp = tmp_b->target;
 		tmp_b = tmp_b->next;
 	}
 	return ;

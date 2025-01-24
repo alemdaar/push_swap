@@ -1,9 +1,15 @@
 #include "header.h"
 
+void lll()
+{
+	system("leaks -q push_swap");
+}
+
 int main (int ac, char **av) {
 	t_stack *a;
 	t_extracter *result;
 
+	// atexit(lll);
 	if (ac == 1)
  		return 0;
  	result = correct_nb(av, ac);

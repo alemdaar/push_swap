@@ -6,7 +6,7 @@
 /*   By: oelhasso <elhassounioussama2@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:05:44 by oelhasso          #+#    #+#             */
-/*   Updated: 2025/01/23 15:04:06 by oelhasso         ###   ########.fr       */
+/*   Updated: 2025/01/24 20:29:20 by oelhasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-// # include <stdio.h>
+# include <stdio.h>
 
 typedef struct stack_st {
 	int				number;
